@@ -99,3 +99,4 @@ source $ZSH/oh-my-zsh.sh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 alias ll="ls -lah"
+alias nvim="~/nvim-bin/bin/nvim"
