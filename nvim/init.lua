@@ -240,28 +240,56 @@ require("lazy").setup({
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
-		opts = {
-			filesystem = {
-				filtered_items = {
-					visible = true,
-					show_hidden_count = true,
-					hide_dotfiles = false,
-					hide_gitignored = true,
-					hide_by_name = {
-						-- '.git',
-						-- '.DS_Store',
-						-- 'thumbs.db',
-					},
-					never_show = {},
-				},
-			},
-		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
 			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 		},
+		config = function()
+			-- Your Neo-tree configuration here
+			require("neo-tree").setup({
+				filesystem = {
+					filtered_items = {
+						visible = true,
+						show_hidden_count = true,
+						hide_dotfiles = false,
+						hide_gitignored = true,
+						hide_by_name = {
+							-- '.git',
+							-- '.DS_Store',
+							-- 'thumbs.db',
+						},
+						never_show = {},
+					},
+				},
+			})
+			-- Automatically open Neo-tree on startup if no file is specified
+			vim.api.nvim_create_autocmd("VimEnter", {
+				callback = function()
+					if vim.fn.argc() == 0 then
+						vim.cmd("Neotree")
+					end
+				end,
+			})
+
+			-- Exit Neovim if Neo-tree is the last remaining window
+			vim.api.nvim_create_autocmd("BufEnter", {
+				pattern = "*",
+				callback = function()
+					-- Get the list of open windows
+					local wins = vim.api.nvim_tabpage_list_wins(0)
+					if #wins == 1 then
+						-- Check if the last window contains Neo-tree
+						local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(wins[1]))
+						if string.find(bufname, "neo%-tree") ~= nil then
+							-- If Neo-tree is the only window, exit Neovim
+							vim.cmd("quit")
+						end
+					end
+				end,
+			})
+		end,
 	},
 	-- Here is a more advanced example where we pass configuration
 	-- options to `gitsigns.nvim`. This is equivalent to the following Lua:
