@@ -26,11 +26,11 @@ $(STOW_DIR)/stow-latest.tar.gz: install_deps
 	cd $(STARTING_LOC)
 
 install_tmux:
-	ifeq ($(OS), Darwin)
-		brew install tmux
-	else ifeq ($(OS), Linux)
-		sudo apt install -y tmux
-	endif
+ifeq ($(OS), Darwin)
+	brew install tmux
+else ifeq ($(OS), Linux)
+	sudo apt install -y tmux
+endif
 	@if [ ! -d $(TMUX_PLUGIN_DIR) ]; then \
 		git clone https://github.com/tmux-plugins/tpm $(TMUX_PLUGIN_DIR); \
 	fi
