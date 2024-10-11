@@ -16,7 +16,7 @@ jobs:
         os: [ macos-latest, ubuntu-latest ]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@4
+      - uses: actions/checkout@3
 
       - run: ls -l
 
