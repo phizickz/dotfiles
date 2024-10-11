@@ -15,15 +15,14 @@ else ifeq ($(OS), Linux)
 	sudo apt install -y tar
 endif
 
-install_stow: $(STOW_DIR)/stow-latest.tar.gz install_perl
-	cd $(STOW_DIR) 
-	./configure 
-	make install
-	cd $(STARTING_LOC)
-
-$(STOW_DIR)/stow-latest.tar.gz: install_deps
+install_stow: install_perl install_deps
 	mkdir -p $(STOW_DIR)
 	wget https://gnuftp.uib.no/stow/stow-latest.tar.gz -P $(STOW_DIR)
+	cd $(STOW_DIR)
+	tar xzf stow-latest.tar.gz -C latest
+	cd $(STOW_DIR)/latest
+	./configure 
+	make install
 	cd $(STARTING_LOC)
 
 install_tmux:
