@@ -100,3 +100,4 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 alias ll="ls -lah"
 alias nvim="~/nvim-bin/bin/nvim"
+export PATH="$PATH:/opt/nvim-linux64/bin"

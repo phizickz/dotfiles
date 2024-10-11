@@ -1,0 +1,22 @@
+name: Run simple tests to installer
+
+on:
+  push:
+    branches:
+      - '*'
+
+
+jobs:
+  run-tests:
+    name: Run tests
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ macos-latest, ubuntu-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@4
+
+      - run: ls -l
+
