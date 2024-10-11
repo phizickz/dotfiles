@@ -6,8 +6,9 @@ TMUX_PLUGIN_DIR := $(HOME)/.tmux/plugins/tpm
 # Detect operating system
 OS := $(shell uname -s)
 
-setup: install_tmux install_stow install_neovim
+setup: install_deps install_tmux install_stow install_neovim
 	rm -f nvim-linux64.tar.gz
+	rm -f $(STOW_DIR)/stow-latest.tar.gz
 
 install_deps:
 ifeq ($(OS), Darwin)
@@ -15,7 +16,7 @@ else ifeq ($(OS), Linux)
 	sudo apt install -y tar
 endif
 
-install_stow: install_perl install_deps
+install_stow: install_perl
 	mkdir -p $(STOW_DIR)
 	wget https://gnuftp.uib.no/stow/stow-latest.tar.gz -P $(STOW_DIR)
 	cd $(STOW_DIR)
