@@ -6,9 +6,8 @@ TMUX_PLUGIN_DIR := $(HOME)/.tmux/plugins/tpm
 # Detect operating system
 OS := $(shell uname -s)
 
-install: install_tmux_plugin_manager install_perl install_stow install_neovim
+install: install_tmux install_perl install_stow install_neovim
 	rm -f nvim-linux64.tar.gz
-
 install_deps:
 ifeq ($(OS), Darwin)
 	brew install tar 
@@ -44,3 +43,5 @@ install_neovim:
 	sudo rm -rf /opt/nvim
 	sudo tar -C /opt -xzf nvim-linux64.tar.gz
 
+clean:
+	rm -f nvim-linux64.tar.gz
