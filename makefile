@@ -6,7 +6,7 @@ TMUX_PLUGIN_DIR := $(HOME)/.tmux/plugins/tpm
 # Detect operating system
 OS := $(shell uname -s)
 
-install: install_tmux install_stow install_neovim
+setup: install_tmux install_stow install_neovim
 	rm -f nvim-linux64.tar.gz
 
 install_deps:
@@ -16,7 +16,9 @@ else ifeq ($(OS), Linux)
 endif
 
 install_stow: $(STOW_DIR)/stow-latest.tar.gz install_perl
-	cd $(STOW_DIR) && ./configure && make install
+	cd $(STOW_DIR) 
+	./configure 
+	make install
 	cd $(STARTING_LOC)
 
 $(STOW_DIR)/stow-latest.tar.gz: install_deps
