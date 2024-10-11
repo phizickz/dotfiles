@@ -18,7 +18,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: |
-          chmod +x installer.sh
-          ./installer.sh
-
+      - run: make install
