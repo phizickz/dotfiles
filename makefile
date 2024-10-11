@@ -11,7 +11,6 @@ install: install_tmux install_stow install_neovim
 
 install_deps:
 ifeq ($(OS), Darwin)
-	brew install tar 
 else ifeq ($(OS), Linux)
 	sudo apt install -y tar
 endif
@@ -44,5 +43,3 @@ install_neovim:
 	sudo rm -rf /opt/nvim
 	sudo tar -C /opt -xzf nvim-linux64.tar.gz
 
-clean:
-	rm -f nvim-linux64.tar.gz
