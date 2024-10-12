@@ -19,8 +19,9 @@ install_stow:
 	mkdir -p $(STOW_DIR)
 	wget https://gnuftp.uib.no/stow/stow-latest.tar.gz -P $(STOW_DIR)
 	tar xzf $(STOW_DIR)/stow-latest.tar.gz -C $(STOW_DIR)
+	ls -l $(STOW_DIR)
 	XDIR=$(shell find $(STOW_DIR) -maxdepth 1 -type d -name "stow-*" | head -n 1)
-	echo $XDIR
+	echo $$XDIR
 	$(STOW_DIR)/$$XDIR/configure 
 	make install
 	rm -f $(STOW_DIR)/stow-latest.tar.gz
