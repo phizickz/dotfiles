@@ -45,5 +45,4 @@ install_neovim:
 	sudo rm -rf /opt/nvim
 	sudo tar -C /opt -xzf nvim-linux64.tar.gz
 	rm -f nvim-linux64.tar.gz
-	nvim -version
 
