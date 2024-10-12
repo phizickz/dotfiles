@@ -14,13 +14,14 @@ else ifeq ($(OS), Linux)
 	sudo apt install -y tar
 endif
 
-install_stow: install_perl
+#install_stow: install_perl
+install_stow: 
 	mkdir -p $(STOW_DIR)
 	cd $(STOW_DIR)
-	ls -la
 	wget https://gnuftp.uib.no/stow/stow-latest.tar.gz
 	ls -la
 	tar xzf stow-latest.tar.gz -C latest
+	ls -la
 	cd latest
 	./configure 
 	make install
