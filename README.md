@@ -1,6 +1,6 @@
-**Setup**
+**Setup**<br/>
 Install dependencies by running
-``make setup``
+``make setup``<br/>
 
-**Stow**
+**Stow**<br/>
 Stow can now be used to symlink the dotfiles.
