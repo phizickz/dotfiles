@@ -40,10 +40,10 @@ endif
 install_perl:
 	curl -L http://xrl.us/installperlnix | bash
 
-
 install_neovim:
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 	sudo rm -rf /opt/nvim
 	sudo tar -C /opt -xzf nvim-linux64.tar.gz
 	rm -f nvim-linux64.tar.gz
+	nvim -version
 
