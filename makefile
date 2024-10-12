@@ -16,11 +16,12 @@ endif
 
 install_stow: install_perl
 	mkdir -p $(STOW_DIR)
-	wget https://gnuftp.uib.no/stow/stow-latest.tar.gz -P $(STOW_DIR)
 	cd $(STOW_DIR)
 	ls -la
+	wget https://gnuftp.uib.no/stow/stow-latest.tar.gz
+	ls -la
 	tar xzf stow-latest.tar.gz -C latest
-	cd $(STOW_DIR)/latest
+	cd latest
 	./configure 
 	make install
 	rm -f $(STOW_DIR)/stow-latest.tar.gz
