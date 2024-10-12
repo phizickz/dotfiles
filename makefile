@@ -7,8 +7,6 @@ TMUX_PLUGIN_DIR := $(HOME)/.tmux/plugins/tpm
 OS := $(shell uname -s)
 
 setup: install_deps install_tmux install_stow install_neovim
-	rm -f nvim-linux64.tar.gz
-	rm -f $(STOW_DIR)/stow-latest.tar.gz
 
 install_deps:
 ifeq ($(OS), Darwin)
@@ -20,10 +18,12 @@ install_stow: install_perl
 	mkdir -p $(STOW_DIR)
 	wget https://gnuftp.uib.no/stow/stow-latest.tar.gz -P $(STOW_DIR)
 	cd $(STOW_DIR)
+	ls -la
 	tar xzf stow-latest.tar.gz -C latest
 	cd $(STOW_DIR)/latest
 	./configure 
 	make install
+	rm -f $(STOW_DIR)/stow-latest.tar.gz
 	cd $(STARTING_LOC)
 
 install_tmux:
@@ -44,4 +44,5 @@ install_neovim:
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 	sudo rm -rf /opt/nvim
 	sudo tar -C /opt -xzf nvim-linux64.tar.gz
+	rm -f nvim-linux64.tar.gz
 
