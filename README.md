@@ -1,6 +1,6 @@
-Requires 
-- ZSH
-- Tmux
-- Tmux Plugin Manager
-- Neovim
+**Setup**
+Install dependencies by running
+``make setup``
 
+**Stow**
+Stow can now be used to symlink the dotfiles.

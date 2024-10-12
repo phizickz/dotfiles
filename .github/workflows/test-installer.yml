@@ -9,9 +9,7 @@ on:
 jobs:
   run-tests:
     name: Run tests
-#   continue-on-error: true
     strategy:
-#     fail-fast: false
       matrix:
         os: [ macos-latest, ubuntu-latest ]
         recipes: [ install_stow, install_tmux, install_neovim ]
