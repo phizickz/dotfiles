@@ -21,7 +21,10 @@ install_stow: install_perl
 	cd $(STOW_DIR); \
 	XDIR=$$(find $(STOW_DIR) -maxdepth 1 -type d -name "stow-*" | head -n 1); \
 	echo "xdir: $$XDIR"; \
-	cd $$XDIR && ./configure && make && make install
+	cd $$XDIR; \
+	sudo ./configure; \
+	sudo make; \
+	sudo make install
 	rm -f $(STOW_DIR)/stow-latest.tar.gz
 
 install_tmux:
