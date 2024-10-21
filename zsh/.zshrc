@@ -101,3 +101,6 @@ source $ZSH/oh-my-zsh.sh
 alias ll="ls -lah"
 alias nvim="~/nvim-bin/bin/nvim"
 export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:$GOROOT/bin"
+export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$HOME/templ"
