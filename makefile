@@ -10,6 +10,7 @@ setup: install_deps install_tmux install_neovim install_stow
 
 install_deps:
 ifeq ($(OS), Darwin)
+	brew install wget
 else ifeq ($(OS), Linux)
 	sudo apt install -y tar
 endif
@@ -21,7 +22,7 @@ install_stow: install_perl
 	cd $(STOW_DIR); \
 	XDIR=$$(find $(STOW_DIR) -maxdepth 1 -type d -name "stow-*" | head -n 1); \
 	echo "xdir: $$XDIR"; \
-	cd $$XDIR; \
+	cp -r $$XDIR/* .; \
 	sudo ./configure; \
 	sudo make; \
 	sudo make install
