@@ -36,6 +36,7 @@ else ifeq ($(OS), Linux)
 endif
 	@if [ ! -d $(TMUX_PLUGIN_DIR) ]; then \
 		git clone https://github.com/tmux-plugins/tpm $(TMUX_PLUGIN_DIR); \
+		tmux source ~/.tmux.conf ; \
 	fi
 
 install_perl:
