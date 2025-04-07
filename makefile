@@ -50,15 +50,3 @@ endif
 	sudo tar -C /opt -xzf nvim-linux64.tar.gz
 	rm -f nvim-linux64.tar.gz
 
-download_nerdfonts:
-ifeq ($(OS), Darwin)
-	brew install wget
-else ifeq ($(OS), Linux)
-	sudo apt install -y fontconfig
-endif
-	wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/CodeNewRoman.zip; \
-	cd ~/.local/share/fonts; \
-	unzip CodeNewRoman.zip; \
-	rm CodeNewRoman.zip; \
-	fc-cache -fv
-
